@@ -1,2 +1,2 @@
 # cpp
-My college's projects in C++
+My college's projects in C++.
