@@ -152,7 +152,7 @@ int main() {
                 break;
             case 4:
                 break;
-            case 666:
+            case 666: // Meu primeiro easter egg :D
                 cout << "- = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - =\n";
                 cout << "\t G N U / L I N U X    S E J A    L O U V A D O ! ! !\n";
                 cout << "- = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - =\n";
