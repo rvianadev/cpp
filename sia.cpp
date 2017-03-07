@@ -24,7 +24,7 @@ struct Aluno {
 };
 
 int main() {
-    int cont = 0, opcao = 0, mat = 0, qtAlunos = 0, qtNotas = 0, codMat = 0;
+    int cont = 0, opcao = 0, mat = 0, qtAlunos = 0, qtNotas = 0, codMat = 0, alunoSuper = 0;
     Aluno aluno[5];
 
     while (opcao != 4) {
@@ -136,13 +136,14 @@ int main() {
                                 cout << "Matrícula: " << aluno[cont].matricula << endl;
                                 cout << "Média: " << aluno[cont].media << endl;
                                 cout << "---------------------------------------" << endl;
-                                cont = 5;
+                                alunoSuper += 1;
                             }
                             else {
-                                if (cont == 4) {
+                                if (alunoSuper == 0) {
                                     cout << "\n";
                                     cout << "Não há alunos com média acima de 7.0\n";
                                     cout << "--------------------------------------------------------------------\n";
+                                    cont = 5;
                                 }
                             }
                         }
