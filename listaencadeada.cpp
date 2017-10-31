@@ -180,7 +180,7 @@ void excluirMatricula(Alunos *&inicio, Alunos *&fim) {
     Alunos *d, *aux;
     int mat;
     d = inicio;
-    aux = d;
+    aux = inicio;
     int contador = total;
     cout << "\n\t---------------\n";
     cout << "\t Apagar aluno\n";
@@ -189,34 +189,37 @@ void excluirMatricula(Alunos *&inicio, Alunos *&fim) {
     cin >> mat;
 
     while (contador > 0) {
-        if (mat == d->matricula) {
-            // A matricula esta no inicio?
-            if (d == inicio) {
-                aux = d->proximo;
+        if (mat == d->matricula && inicio == fim) {
+            delete d;
+            inicio = NULL;
+            fim = NULL;
+            achei = 1;
+            cout << "\n1\n";
+            break;
+        }
+
+        if (mat == d->matricula && d == inicio) {
+            inicio = d->proximo;
+            delete d;
+            achei = 1;
+            cout << "\n2\n";
+            break;
+        }
+
+        if (mat == d->matricula && d != inicio && d != fim) {
+            if (aux == inicio) {
+                aux->proximo = d->proximo;
                 inicio = aux;
                 delete d;
                 achei = 1;
+                cout << "\n3\n";
                 break;
             }
             else {
                 aux->proximo = d->proximo;
                 delete d;
                 achei = 1;
-                break;
-            }
-
-            // A matricula esta no final?
-            if (d == fim) {
-                aux->proximo = NULL;
-                fim = aux;
-                delete d;
-                achei = 1;
-                break;
-            }
-            else {
-                aux->proximo = d->proximo;
-                delete d;
-                achei = 1;
+                cout << "\n3\n";
                 break;
             }
         }
@@ -224,12 +227,28 @@ void excluirMatricula(Alunos *&inicio, Alunos *&fim) {
             aux = d;
             d = d->proximo;
         }
-        contador--;
+
+        if (mat == d->matricula && d == fim) {
+            aux->proximo = NULL;
+            fim = aux;
+            delete d;
+            achei = 1;
+            cout << "\n4\n";
+            break;
+        }
+        else {
+            aux = d;
+            d = d->proximo;
+        }
     }
 
     if (achei == 1) {
         total--;
     }
+    else {
+        cout << "\n Matrícula não encontrada.\n\n";
+    }
+    cout << "\t Total: " << total << "\n\n";
 }
 
 int main() {
