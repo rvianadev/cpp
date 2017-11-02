@@ -1,6 +1,6 @@
 /* Este programa implementa uma lista encadeada simples
    com funcoes para incluir elemento, localizar elemento,
-   excluir elemento e listar todos os elementos cadastrados
+   excluir elemento e listar todos os elementos cadastrados.
    
    Rodrigo Viana
    roviol at gmail com
