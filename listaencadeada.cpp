@@ -1,11 +1,11 @@
 /* Este programa implementa uma lista encadeada simples
    com funcoes para incluir elemento, localizar elemento,
    excluir elemento e listar todos os elementos cadastrados
+   
    Rodrigo Viana
    roviol at gmail com
    02/11/2017
 */
-
 
 #include <iostream>
 #include <cstdlib>
