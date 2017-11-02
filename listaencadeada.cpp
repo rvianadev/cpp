@@ -65,10 +65,15 @@ void menu() {
                         break;
                     }
                     else {
-                        cout << "\n\t Nota 1: ";
-                        cin >> nota1;
-                        cout << "\n\t Nota 2: ";
-                        cin >> nota2;
+                        do {                          
+                            cout << "\n\t Nota 1: ";
+                            cin >> nota1;
+                        } while (nota1 < 0 || nota1 > 10); // Somente aceita notas entre 0 e 10
+
+                        do {                          
+                            cout << "\n\t Nota 2: ";
+                            cin >> nota2;
+                        } while (nota2 < 0 || nota2 > 10); // Somente aceita notas entre 0 e 10
                         criarListaPreencherLista(inicio, fim, mat, nota1, nota2);
                     }
                 }
