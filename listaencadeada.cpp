@@ -1,11 +1,9 @@
 /* Este programa implementa uma lista encadeada simples
    com funcoes para incluir elemento, localizar elemento,
    excluir elemento e listar todos os elementos cadastrados
-
-   Falta implementar o código que testa se a lista está vazia
-   29/10/2017
    Rodrigo Viana
    roviol at gmail com
+   02/11/2017
 */
 
 
@@ -30,18 +28,13 @@ void excluirMatricula(Alunos *&inicio, Alunos *&fim);
 int mat = 1;
 int achei = 0;
 float nota1, nota2;
-
-/* A variavael 'total' sera incrementada a cada registro incluido
- * e sera atribuida a variavel 'contador', que sera decrementada
- * na funcao imprimirLista() e localizarMatricula(), auxiliando na
- * exibicao dos registros
-*/
 int total = 0;
 
 void menu() {
     int opcao = 0;
 
     while (opcao != 5) {
+
         cout << "\t\t-----------------------------------------\n";
         cout << "\t\t  C A D A S T R O    D E    A L U N O S\n";
         cout << "\t\t-----------------------------------------\n\n";
@@ -57,13 +50,10 @@ void menu() {
         // apos este ter sido chamado pela primeira vez
         if (opcao == 1) mat = 1;
 
-        // Sem o if abaixo ocorre erro no contador da funcao excluirMatricula
-        // apos esta ter sido chamada pela primeira vez
-        if (opcao == 4) achei = 0;
-
         switch (opcao) {
             case 1:
                 while (mat != 0) {
+                    system("clear");
                     cout << "\n\t---------------\n";
                     cout << "\t Inserir aluno\n";
                     cout << "\t---------------\n";
@@ -105,7 +95,6 @@ void menu() {
 
 void criarListaPreencherLista (Alunos *&inicio, Alunos *&fim, int mat, float n1, float n2) {
     Alunos *a;
-    int contador = total;
     // Testa se a lista esta vazia
     if (inicio == fim && inicio == NULL) {
         inicio = new Alunos;
@@ -115,8 +104,7 @@ void criarListaPreencherLista (Alunos *&inicio, Alunos *&fim, int mat, float n1,
         inicio->media = (n1 + n2) / 2;
         inicio->proximo = NULL;
         fim = inicio;
-        contador++;
-        total = contador;
+        total++;
     }
     // Se nao vazia, entao inclui novo registro
     else {
@@ -128,127 +116,164 @@ void criarListaPreencherLista (Alunos *&inicio, Alunos *&fim, int mat, float n1,
         a->media = (n1 + n2) / 2;
         a->proximo = NULL;
         fim = a;
-        contador++;
-        total = contador;
+        total++;
     }
     cout << "\n\t" << total << " registro(s).\n";
 }
 
 void imprimirLista (Alunos *&inicio) {
-    Alunos *b;
+    Alunos *b, *endereco, *endProx, *endInicio, *endFim;
     b = inicio;
-    int contador = total;
-    cout << "\n\t--------------------\n";
-    cout << "\t Alunos cadastrados\n";
-    cout << "\t--------------------\n";
-    while (contador > 0) {
-        cout << "\n\t  Matrícula:\t " << b->matricula << '\n';
-        cout << "\n\t  Nota 1:\t " << b->nota1 << '\n';
-        cout << "\n\t  Nota 2:\t " << b->nota2 << '\n';
-        cout << "\n\t  Média:\t " << b->media << "\n";
-        cout << "\n\t .....................\n\n";
-        b = b->proximo;
-        contador--;
+    //int controle = 0;
+    //int contador = total;
+
+    endereco = b;
+    endInicio = inicio;
+    endFim = fim;
+
+    if (inicio == NULL && fim == NULL) {
+        cout << "\n\t Não há alunos cadastrados.\n\n";
+    }
+    else {
+        cout << "\n\t--------------------\n";
+        cout << "\t Alunos cadastrados\n";
+        cout << "\t--------------------\n\n";
+        while (b != fim) {
+            endereco = b;
+            cout << "\t  Endereço:\t " << endereco << endl;
+            cout << "\t  Matrícula:\t " << b->matricula << endl;
+            cout << "\t  Nota 1:\t " << b->nota1 << endl;
+            cout << "\t  Nota 2:\t " << b->nota2 << endl;
+            cout << "\t  Média:\t " << b->media << endl;
+            cout << "\t  Próximo nó:\t " << b->proximo << endl;
+            cout << "\t ..............................\n\n";
+            b = b->proximo;
+
+        }
+
+        endereco = b;
+        cout << "\t  Endereço:\t " << endereco << endl;
+        cout << "\t  Matrícula:\t " << b->matricula << endl;
+        cout << "\t  Nota 1:\t " << b->nota1 << endl;
+        cout << "\t  Nota 2:\t " << b->nota2 << endl;
+        cout << "\t  Média:\t " << b->media << endl;
+        cout << "\t  Próximo nó:\t " << b->proximo << endl;
+        cout << "\t ..............................\n\n";
+
+        cout << "\t Total: " << total << "\n";
+        cout << "\t Endereço de INÍCIO: " << endInicio << "\n";
+        cout << "\t Endereço de FIM: " << endFim << "\n\n";
     }
 }
 
 void localizarMatricula(Alunos *&inicio) {
-    Alunos *c;
+    Alunos *c, *endereco;
+    int achei = 0;
     int mat;
     c = inicio;
-    int contador = total;
-    cout << "\n\t---------------\n";
-    cout << "\t Localizar aluno\n";
-    cout << "\t---------------\n";
-    cout << "\n Matrícula: ";
-    cin >> mat;
-    while (contador > 0) {
-        if (c->matricula == mat) {
-            cout << "\n .....................\n";
+    endereco = c;
+
+    if (inicio == NULL && fim == NULL) {
+        cout << "\n\t Não há alunos cadastrados.\n\n";
+    }
+    else {
+        system("clear");
+        cout << "\n\t---------------\n";
+        cout << "\t Localizar aluno\n";
+        cout << "\t---------------\n";
+        cout << "\n Matrícula: ";
+        cin >> mat;
+        while (c != fim) {
+            if (c->matricula == mat) {
+                achei = 1;
+                cout << "\n ................................\n";
+                cout << "  Endereço:\t " << endereco << '\n';
+                cout << "  Matrícula:\t " << c->matricula << '\n';
+                cout << "  Nota 1:\t " << c->nota1 << '\n';
+                cout << "  Nota 2:\t " << c->nota2 << '\n';
+                cout << "  Média:\t " << c->media << "\n";
+                cout << "  Próximo nó:\t " << c->proximo << '\n';
+                cout << " ................................\n\n";
+            }
+            c = c->proximo;
+        }
+
+        if (mat == fim->matricula) {
+            achei = 1;
+            cout << "\n ................................\n";
+            cout << "  Endereço:\t " << endereco << '\n';
             cout << "  Matrícula:\t " << c->matricula << '\n';
             cout << "  Nota 1:\t " << c->nota1 << '\n';
             cout << "  Nota 2:\t " << c->nota2 << '\n';
             cout << "  Média:\t " << c->media << "\n";
-            cout << " .....................\n\n";
+            cout << "  Próximo nó:\t " << c->proximo << '\n';
+            cout << " ................................\n\n";
         }
-        c = c->proximo;
-        contador--;
+
+        if (achei != 1) {
+            cout << "\nA matrícula " << mat << " não está cadastrada.\n\n";
+        }
     }
 }
 
 void excluirMatricula(Alunos *&inicio, Alunos *&fim) {
     Alunos *d, *aux;
-    int mat;
+    int mat, achei = 0;
     d = inicio;
     aux = inicio;
-    int contador = total;
-    cout << "\n\t---------------\n";
-    cout << "\t Apagar aluno\n";
-    cout << "\t---------------\n";
-    cout << "\n Matrícula: ";
-    cin >> mat;
 
-    while (contador > 0) {
-        if (mat == d->matricula && inicio == fim) {
-            delete d;
-            inicio = NULL;
-            fim = NULL;
-            achei = 1;
-            cout << "\n1\n";
-            break;
-        }
-
-        if (mat == d->matricula && d == inicio) {
-            inicio = d->proximo;
-            delete d;
-            achei = 1;
-            cout << "\n2\n";
-            break;
-        }
-
-        if (mat == d->matricula && d != inicio && d != fim) {
-            if (aux == inicio) {
-                aux->proximo = d->proximo;
-                inicio = aux;
-                delete d;
-                achei = 1;
-                cout << "\n3\n";
-                break;
-            }
-            else {
-                aux->proximo = d->proximo;
-                delete d;
-                achei = 1;
-                cout << "\n3\n";
-                break;
-            }
-        }
-        else {
-            aux = d;
-            d = d->proximo;
-        }
-
-        if (mat == d->matricula && d == fim) {
-            aux->proximo = NULL;
-            fim = aux;
-            delete d;
-            achei = 1;
-            cout << "\n4\n";
-            break;
-        }
-        else {
-            aux = d;
-            d = d->proximo;
-        }
-    }
-
-    if (achei == 1) {
-        total--;
+    if (inicio == NULL && fim == NULL) {
+        cout << "\n\t Não há alunos cadastrados.\n\n";
     }
     else {
-        cout << "\n Matrícula não encontrada.\n\n";
+        cout << "\n\t---------------\n";
+        cout << "\t Apagar aluno\n";
+        cout << "\t---------------\n";
+        cout << "\n Matrícula: ";
+        cin >> mat;
+        if (mat == inicio->matricula && inicio == fim) {
+            inicio = NULL;
+            fim = NULL;
+            delete d;
+            achei = 1;
+            total--;
+        }
+        else {
+            while (d != fim) {
+                if (mat == d-> matricula && d == inicio) {
+                    inicio = d->proximo;
+                    delete d;
+                    achei = 1;
+                    total--;
+                    break;
+                }
+                else {
+                    d = d->proximo;
+                    if (mat == d->matricula && d != fim) {
+                        aux->proximo = d->proximo;
+                        delete d;
+                        achei = 1;
+                        total--;
+                        break;
+                    }
+                    else {
+                        if (d != fim) aux = d;
+                    }
+                    if (mat == d->matricula && d == fim) {
+                        aux->proximo = NULL;
+                        fim = aux;
+                        delete d;
+                        achei = 1;
+                        total--;
+                        break;
+                    }
+                }
+            }
+        }
     }
-    cout << "\t Total: " << total << "\n\n";
+    if (achei != 1 && inicio != NULL && fim != NULL) {
+        cout << "\nA matrícula " << mat << " não está cadastrada.\n\n";
+    }
 }
 
 int main() {
