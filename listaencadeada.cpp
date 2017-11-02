@@ -124,9 +124,7 @@ void criarListaPreencherLista (Alunos *&inicio, Alunos *&fim, int mat, float n1,
 void imprimirLista (Alunos *&inicio) {
     Alunos *b, *endereco, *endProx, *endInicio, *endFim;
     b = inicio;
-    //int controle = 0;
-    //int contador = total;
-
+    
     endereco = b;
     endInicio = inicio;
     endFim = fim;
