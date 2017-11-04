@@ -116,7 +116,7 @@ void Exibir(No *&inicio) {
 
 int main() {
     do {
-        cout << "\nInforme um número: ";
+        cout << "\nInforme um número (ou '0' para encerrar): ";
         cin >> numero;
         if (numero != 0) {
             Inserir(numero);
