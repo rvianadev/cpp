@@ -2,9 +2,13 @@
    dynamic memory alocation, with functions to insert,
    search, delete and list all elements.
    
-   Made with Debian GNU/Linux and Atom
+   Developed with Debian GNU/Linux and Atom
    http://www.debian.org
    http://atom.io
+   
+   Rodrigo Viana de Oliveira
+   roviol at gmail com
+   11/19/2017   
 
    Este programa implementa uma lista encadeada simples
    usando alocação dinâmica de memória com funções para incluir,
