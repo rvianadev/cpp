@@ -1,4 +1,12 @@
-/* Este programa implementa uma lista encadeada simples
+/* This program implements a simple linked list, using
+   dynamic memory alocation, with functions to insert,
+   search, delete and list all elements.
+   
+   Made with Debian GNU/Linux and Atom
+   http://www.debian.org
+   http://atom.io
+
+   Este programa implementa uma lista encadeada simples
    usando alocação dinâmica de memória com funções para incluir,
    localizar, excluir e listar todos os elementos cadastrados.
 
