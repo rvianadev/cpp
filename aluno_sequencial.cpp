@@ -1,5 +1,4 @@
-/* 
-   This program implements a user definied array with functions
+/* This program implements a user definied array with functions
    to insert, delete and list all elements.
    
    Developed with Debian GNU/Linux and Atom
