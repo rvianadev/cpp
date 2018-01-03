@@ -2,7 +2,7 @@
    This program implements a user definied array with functions
    to insert, delete and list all elements.
    
-   Made with Debian GNU/Linux and Atom
+   Developed with Debian GNU/Linux and Atom
    http://www.debian.org
    http://atom.io
    
